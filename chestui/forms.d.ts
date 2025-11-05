@@ -17,9 +17,6 @@ declare class ChestFormData {
 	 * @param size The size of the chest to display as.
 	 * @param title Sets the title of the ui. Identical to the `.title` function.
 	 * @param borderThickness Determines which slots are considered part of the border. Automatically updates with `.border`
-	 * 
-	 * -EMMZ: This is my pack now
-	 * 
 	 */
 	constructor(size?: 'small' | 'single' | 'large' | 'double' | 5 | 9 | 18 | 27 | 36 | 45 | 54 | 63 | 72 | 81 | 108 | 162, title: string, borderThickness?: number);
 	/**

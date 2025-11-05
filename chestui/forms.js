@@ -40,7 +40,7 @@ const sizes = new Map([
 ]);
 
 class ChestFormData {
-	#titleText; #buttonArray; #borderThickness
+	#titleText; #buttonArray; #borderThickness; #default
 	constructor(size = 'small', title = "", borderThickness = 1) {
 		const sizing = sizes.get(size.toString()) ?? ['§c§h§e§s§t§2§7§r', 27];
 		/** @internal */
@@ -50,6 +50,7 @@ class ChestFormData {
 		this.#borderThickness = borderThickness
 		this.slotCount = sizing[1];
 		this.bottom = this.slotCount - 9
+		this.#default = { texture: "g/gray" }
 
 		if (this.slotCount % 2 == 1) {
 			this.center = Math.floor(this.slotCount / 2)
@@ -137,7 +138,7 @@ class ChestFormData {
 		]);
 		return this;
 	}
-	pattern(pattern, key) {
+	pattern(pattern, key = { x: this.#default }) {
 		for (let i = 0; i < pattern.length; i++) {
 			const row = pattern[i];
 			for (let j = 0; j < row.length; j++) {
@@ -151,7 +152,7 @@ class ChestFormData {
 		}
 		return this;
 	}
-	border(data, thickness = 1) {
+	border(data = this.#default, thickness = 1) {
 		this.#borderThickness = thickness
 		this.borderSlots = []
 		this.centerSlots = []
@@ -173,11 +174,22 @@ class ChestFormData {
 			}
 		}
 	}
-	fill(row, data, amount = 1) {
+	fill(from, to, data = this.#default) {
 		const { texture, stackAmount = "", durability = 0, itemName = "", itemDesc = "", enchanted = false, color = false } = data;
-		for (let i = 0; i < 9 * amount; i++) {
-			this.button(i + (row - 1) * 9, itemName, itemDesc, texture, stackAmount, durability, enchanted, color)
+		if (typeof from == "number") {
+			for (let i = from; i < to; i++) {
+				this.button(i, itemName, itemDesc, texture, stackAmount, durability, enchanted, color)
+			}
+		} else {
+			for (let i = from.x; i <= to.x; i++) {
+				for (let q = from.y; q <= to.y; q++) {
+					this.button({ x: i, y: q }, itemName, itemDesc, texture, stackAmount, durability, enchanted, color)
+				}
+			}
 		}
+	}
+	default(data) {
+		this.#default = data
 	}
 	show(player) {
 
@@ -217,6 +229,7 @@ function textureStuff(texture = 0, enchanted, stackSize = "", color = false) {
 			case "i/": texture = "textures/items/" + texture.slice(2); break
 			case "t/": texture = "textures/" + texture.slice(2); break
 		}
+		if (texture === "textures/blocks/glass_") texture = "textures/blocks/glass"
 		targetTexture = custom_content_keys.has(texture) ? custom_content[texture]?.texture : texture;
 		ID = typeIdToDataId.get(targetTexture) ?? typeIdToID.get(targetTexture)
 	}

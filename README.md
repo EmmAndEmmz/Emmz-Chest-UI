@@ -73,10 +73,15 @@ ui.fill(1, { itemName: "fill item", texture: "g/gray"}, 3)
 ```
 ## Variables
 borderSlots: An array of all slots considered part of the border. By default this includes all slots touching the edge.
+
 centerSlots: An array containing all slots not part of the border.
+
 center: The center slot. Defaults to upper center for uneven centers.
+
 upperCenter: The upper center slot of an uneven ui.
+
 lowerCenter: The lower center slot of an uneven ui.
+
 bottom: The start index of the bottom row of slots.
 
 ## Extra

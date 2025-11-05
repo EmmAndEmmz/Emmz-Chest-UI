@@ -15,7 +15,7 @@ https://github.com/Herobrine643928/Chest-UI/blob/main/README.md
 
 -More sizes
 
--2 extra functions
+-3 extra functions
 
 -Ease of use variables
 
@@ -41,10 +41,10 @@ const ui = new ChestFormData(63, "63 slot ui")
 ```
 Add buttons
 ```js
-ui.button(10, "slot 10", "", "apple", 10)
+ui.button(10, "slot 10", [], "apple", 10) // index, hover text, subtext, texture, stack text
 ```
 ```js
-ui.button({x: 4, y: 6}, "x 4 y 6", "", "g/lime", "+", 0, false, "a")
+ui.button({x: 4, y: 6}, "x 4 y 6", "", "g/lime", "+", 0, false, "a") // coordinates, hover text, subtext, texture, stack text, durability, enchanted, color
 ```
 Button Example 1 
 
@@ -64,28 +64,50 @@ Button Example 2
 ### .border
 Fills a border around the chest ui and updates the border slots variable. Uses data similar to .pattern. Customization thickness
 ```js
-ui.border({ itemName: "border item", texture: "g/gray" }, 1)
+ui.border({ itemName: "border item", texture: "g/gray" }, 1) // data, thickness
 ```
 ### .fill
-Fills one or more rows with data provided. Takes rows as inputs, starts at 1 anchored at the top. Third parameter is amount of rows filled, moving downwards.
+Fills slots consecutively from 1 index to another when given a number. Fills a bound if given coordinates.
 ```js
-ui.fill(1, { itemName: "fill item", texture: "g/gray"}, 3)
+ui.fill(1, 2, { texture: "g/blue" }) // from, to, data
+```
+```js
+ui.fill({ x: 1, y: 1 }, { x: 3, y: 5 }, { texture: "t/ui/background_image" })
+```
+### .default
+Sets default data to use in functions.
+
+Affects `.pattern` (uses default for "x" in the pattern), `.border`, `.fill`,
+
+```js
+ui.default({ itemName: "...", texture: "b/barrier" })
+ui.border() // uses default
 ```
 ## Variables
-borderSlots: An array of all slots considered part of the border. By default this includes all slots touching the edge.
+`borderSlots`: An array of all slots considered part of the border. By default this includes all slots touching the edge.
 
-centerSlots: An array containing all slots not part of the border.
+`centerSlots`: An array containing all slots not part of the border.
 
-center: The center slot. Defaults to upper center for uneven centers.
+`center`: The center slot. Defaults to upper center for uneven centers.
 
-upperCenter: The upper center slot of an uneven ui.
+`upperCenter`: The upper center slot of an uneven ui.
 
-lowerCenter: The lower center slot of an uneven ui.
+`lowerCenter`: The lower center slot of an uneven ui.
 
-bottom: The start index of the bottom row of slots.
+`bottom`: The start index of the bottom row of slots.
 
 ## Extra
 UI sizes can be toggled in `_global_variables.json`
+
+### Texture Path Shortcuts
+
+-`i/` = `textures/items/`
+
+-`b/` = `textures/blocks/`
+
+-`g/` = `textures/blocks/glass_` shows regular glass if no color is specified
+
+-`t/` = `textures/`
 
 # Credits
 

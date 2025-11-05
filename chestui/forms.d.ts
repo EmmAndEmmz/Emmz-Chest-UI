@@ -1,6 +1,17 @@
 import { Player, RawMessage } from "@minecraft/server";
 import { ActionFormResponse } from "@minecraft/server-ui";
 
+/**
+ * @typedef {Object} buttonData
+ * @property {string | rawMessage} itemName
+ * @property {(string | RawMessage)[]} itemDesc
+ * @property {number | string | string[]} stackSize 1 index
+ * @property {boolean} enchanted
+ * @property {number} durability
+ * @property {string | number} texture
+ * @property {string} color 1 character
+ */
+
 declare class ChestFormData {
 	/**
 	 * @param size The size of the chest to display as.
@@ -78,20 +89,25 @@ declare class ChestFormData {
 			s:  { itemName: 'Sword', itemDesc: [], enchanted: true, stackAmount: 999, texture: 'diamond_sword'},
 		})
 	*/
-	pattern(pattern: string[], key: { [key: string]: { itemName?: string | RawMessage, itemDesc?: (string | RawMessage)[], stackSize?: number, enchanted?: boolean, durability?: number, texture: string } }): ChestFormData;
+	pattern(pattern: string[], key: { [key: string]: buttonData }): ChestFormData;
 	/**
 	 * @remarks Fills slots to create a border and updates the ui `borderSlots` and `centerSlots` accordingly.
 	 * @param data The data to use for border slots.
 	 * @param thickness The thickness of the border.
 	 */
-	border(data: { itemName?: string | RawMessage, itemDesc?: (string | RawMessage)[], stackSize?: number, enchanted?: boolean, durability?: number, texture: string }, thickness: number)
+	border(data: buttonData, thickness: number)
 	/**
-	 * @remarks Fills one or more rows using data provided.
-	 * @param row The row to fill, from top, starting at 1.
-	 * @param data The data to use for the slots.
-	 * @param amount The number of rows to fill.
+	 * @remarks Fills from and index to another, or from 1 set of coordinates to another in a bounds.
+	 * @param from The starting index or coordinate.
+	 * @param to The ending index or coordinate.
+	 * @param data The data to fill
 	 */
-	fill(row: number, data: { itemName?: string | RawMessage, itemDesc?: (string | RawMessage)[], stackSize?: number, enchanted?: boolean, durability?: number, texture: string }, amount: number)
+	fill(from: number | object, to: number | object, data: buttonData)
+	/**
+	 * @remarks Sets default data to use when data is not specified in other functions
+	 * @param data The button data used.
+	 */
+	default(data: buttonData)
 	/**
 	  * @remarks
 	  * Creates and shows this modal popup form. Returns

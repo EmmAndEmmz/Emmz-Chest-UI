@@ -5,6 +5,8 @@ https://github.com/Herobrine643928/Chest-UI/blob/main/README.md
 
 *Does not include the Furnace UI or inventory.*
 
+*somewhat outdated, issues will likely arise if you try using it right now. Might fix might not*
+
 ##
 
 <img width="525" height="350" alt="image" src="https://github.com/user-attachments/assets/c3cf3d2a-1655-43e3-b805-cf61a8edee44" />

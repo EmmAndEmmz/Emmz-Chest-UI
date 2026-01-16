@@ -5,7 +5,7 @@ https://github.com/Herobrine643928/Chest-UI/blob/main/README.md
 
 *Does not include the Furnace UI or inventory.*
 
-*somewhat outdated, issues will likely arise if you try using it right now. Might fix might not*
+*I have just fixed a problem relating to textures that must have been caused by an update, if you still have issues with textures plz dm me*
 
 ##
 

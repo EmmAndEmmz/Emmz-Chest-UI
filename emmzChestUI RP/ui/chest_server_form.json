@@ -289,7 +289,6 @@
                 "binding_collection_name": "form_buttons"
             },
             {
-                "binding_name": "#null",
                 "binding_type": "view",
                 "source_property_name": "(not (#form_button_text = ''))",
                 "target_property_name": "#visible"
@@ -312,10 +311,10 @@
                 "target_property_name": "#visible"
             },
             {
-                "binding_type": "view",
-                "source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
-                "target_property_name": "#item_id_aux"
-            }
+            	"binding_type": "view",
+				"source_property_name": "((#form_button_texture - (#form_button_texture % 65536)) / 65536)",
+				"target_property_name": "#item_id_aux"
+			}
         ],
         "default_control": "default",
         "hover_control": "hover",
@@ -465,6 +464,11 @@
             {
                 "binding_type": "collection_details",
                 "binding_collection_name": "form_buttons"
+            },
+            {
+                "binding_type": "view",
+                "source_property_name": "( not (#form_button_text - ('%.18s' * #form_button_text) = '§r'))",
+                "target_property_name": "#visible"
             }
         ]
     },

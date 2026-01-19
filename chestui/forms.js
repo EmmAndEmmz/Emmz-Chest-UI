@@ -125,13 +125,7 @@ class ChestFormData {
 		buttonRawtext.rawtext.forEach(line => {
 			buttonText += `${line.text}`
 		})
-		buttonText = {
-			rawtext: [
-				{
-					text: buttonText.trimEnd()
-				}
-			]
-		}
+		buttonText = buttonText.trimEnd()
 		this.#buttonArray.splice(Math.max(0, Math.min(slot, this.slotCount - 1)), 1, [
 			buttonText,
 			ID === undefined ? targetTexture : ((ID + (ID < 256 ? 0 : number_of_custom_items)) * 65536) + (enchanted ? 32768 : 0)
@@ -205,7 +199,7 @@ class ChestFormData {
 			i++
 			if (i > count) return
 			if (button[1] === "minecraft:") button[1] = 0
-			form.button(button[0], button[1]?.toString());
+			form.button(button[0].slice(0, -2), button[1]?.toString());
 		});
 
 		return form.show(player);

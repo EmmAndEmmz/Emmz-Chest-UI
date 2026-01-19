@@ -7,6 +7,8 @@ https://github.com/Herobrine643928/Chest-UI/blob/main/README.md
 
 *I have just fixed a problem relating to textures that must have been caused by an update, if you still have issues with textures plz dm me*
 
+**latest update: updated typeid list (use herobrine's list anytime it breaks), removed hover text for buttons with no text (use invisible characters if you still want it)**
+
 ##
 
 <img width="525" height="350" alt="image" src="https://github.com/user-attachments/assets/c3cf3d2a-1655-43e3-b805-cf61a8edee44" />

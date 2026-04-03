@@ -1,0 +1,3 @@
+Insert the updated type id list from https://github.com/Herobrine643928/Chest-UI/blob/main/BP/scripts/extensions/typeIds.js
+
+I can't update this list every time some aux id changes

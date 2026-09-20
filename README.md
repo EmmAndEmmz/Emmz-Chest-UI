@@ -5,9 +5,7 @@ https://github.com/Herobrine643928/Chest-UI/blob/main/README.md
 
 *Does not include the Furnace UI or inventory.*
 
-*I have just fixed a problem relating to textures that must have been caused by an update, if you still have issues with textures plz dm me*
-
-**latest update: updated typeid list (use herobrine's list anytime it breaks), removed hover text for buttons with no text (use invisible characters if you still want it)**
+**quick update, i occasionally update this pack for personal use but i dont have it connected to this github. i might change that and actually update this since i think this version may be broken but that will still be later. recommened to use only if you know how to fix yourself. -Emmz 9-19**
 
 ##
 
